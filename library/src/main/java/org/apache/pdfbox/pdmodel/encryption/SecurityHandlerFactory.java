@@ -6,7 +6,7 @@ import java.security.Security;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.spongycastle.jce.provider.BouncyCastleProvider;
+/*import org.spongycastle.jce.provider.BouncyCastleProvider;*/
 
 /**
  * Manages security handlers for the application.
@@ -24,7 +24,7 @@ public final class SecurityHandlerFactory
 
     static
     {
-        Security.addProvider(new BouncyCastleProvider());
+        /*Security.addProvider(new BouncyCastleProvider());*/
     }
 
     private final Map<String, Class<? extends SecurityHandler>> nameToHandler =
@@ -37,13 +37,13 @@ public final class SecurityHandlerFactory
 
     private SecurityHandlerFactory()
     {
-        registerHandler(StandardSecurityHandler.FILTER,
+        /*registerHandler(StandardSecurityHandler.FILTER,
                         StandardSecurityHandler.class,
                         StandardProtectionPolicy.class);
 
         registerHandler(PublicKeySecurityHandler.FILTER,
                         PublicKeySecurityHandler.class,
-                        PublicKeyProtectionPolicy.class);
+                        PublicKeyProtectionPolicy.class);*/
     }
 
     /**

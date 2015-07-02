@@ -27,7 +27,7 @@ import javax.crypto.SecretKey;
 import org.apache.pdfbox.cos.COSArray;
 import org.apache.pdfbox.cos.COSString;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.spongycastle.asn1.ASN1InputStream;
+/*import org.spongycastle.asn1.ASN1InputStream;
 import org.spongycastle.asn1.ASN1ObjectIdentifier;
 import org.spongycastle.asn1.ASN1Primitive;
 import org.spongycastle.asn1.ASN1Set;
@@ -51,7 +51,7 @@ import org.spongycastle.cms.KeyTransRecipientId;
 import org.spongycastle.cms.RecipientId;
 import org.spongycastle.cms.RecipientInformation;
 import org.spongycastle.cms.jcajce.JceKeyTransEnvelopedRecipient;
-import org.spongycastle.jce.provider.BouncyCastleProvider;
+import org.spongycastle.jce.provider.BouncyCastleProvider;*/
 
 /**
  * This class implements the public key security handler described in the PDF specification.
@@ -59,7 +59,8 @@ import org.spongycastle.jce.provider.BouncyCastleProvider;
  * @see PublicKeyProtectionPolicy to see how to protect document with this security handler.
  * @author Benoit Guillon
  */
-public final class PublicKeySecurityHandler extends SecurityHandler
+public final class PublicKeySecurityHandler
+
 {
 	/** The filter name. */
 	public static final String FILTER = "Adobe.PubSec";
@@ -83,7 +84,7 @@ public final class PublicKeySecurityHandler extends SecurityHandler
 	public PublicKeySecurityHandler(PublicKeyProtectionPolicy p)
 	{
 		policy = p;
-		this.keyLength = policy.getEncryptionKeyLength();
+		/*this.keyLength = policy.getEncryptionKeyLength();*/
 	}
 
 	/**
@@ -99,7 +100,7 @@ public final class PublicKeySecurityHandler extends SecurityHandler
 	 * @throws IOException If there is an error accessing data. If verbose mode
 	 * is enabled, the exception message will provide more details why the
 	 * match wasn't successful.
-	 */
+	 *//*
 	@Override
 	public void prepareForDecryption(PDEncryption encryption, COSArray documentIDArray,
 			DecryptionMaterial decryptionMaterial)
@@ -227,9 +228,9 @@ public final class PublicKeySecurityHandler extends SecurityHandler
 		{
 			throw new IOException(e);
 		}
-	}
+	}*/
 	
-	private void appendCertInfo(StringBuilder extraInfo, KeyTransRecipientId ktRid,
+	/*private void appendCertInfo(StringBuilder extraInfo, KeyTransRecipientId ktRid,
 			X509Certificate certificate, X509CertificateHolder materialCert)
 	{
 		BigInteger ridSerialNumber = ktRid.getSerialNumber();
@@ -251,15 +252,15 @@ public final class PublicKeySecurityHandler extends SecurityHandler
 			extraInfo.append(materialCert == null ? "null" : materialCert.getIssuer());
 			extraInfo.append("\' ");
 		}
-	}
+	}*/
 
 	/**
 	 * Prepare the document for encryption.
 	 *
-	 * @param doc The document that will be encrypted.
+	 * The document that will be encrypted.
 	 *
 	 * @throws IOException If there is an error while encrypting.
-	 */
+	 *//*
 	@Override
 	public void prepareDocumentForEncryption(PDDocument doc) throws IOException
 	{
@@ -342,7 +343,7 @@ public final class PublicKeySecurityHandler extends SecurityHandler
 		{
 			throw new IOException(e);
 		}
-	}
+	}*/
 	
 	private byte[][] computeRecipientsField(byte[] seed) throws GeneralSecurityException, IOException
 	{
@@ -369,7 +370,7 @@ public final class PublicKeySecurityHandler extends SecurityHandler
 			pkcs7input[22] = two;
 			pkcs7input[23] = one;
 
-			ASN1Primitive obj = createDERForRecipient(pkcs7input, certificate);
+			/*ASN1Primitive obj = createDERForRecipient(pkcs7input, certificate);
 
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
@@ -379,12 +380,12 @@ public final class PublicKeySecurityHandler extends SecurityHandler
 
 			recipientsField[i] = baos.toByteArray();
 
-			i++;
+			i++;*/
 		}
 		return recipientsField;
 	}
 
-	private ASN1Primitive createDERForRecipient(byte[] in, X509Certificate cert)
+	/*private ASN1Primitive createDERForRecipient(byte[] in, X509Certificate cert)
 			throws IOException, GeneralSecurityException
 	{
 		String algorithm = "1.2.840.113549.3.2";
@@ -430,9 +431,9 @@ public final class PublicKeySecurityHandler extends SecurityHandler
 
 		ContentInfo contentInfo = new ContentInfo(PKCSObjectIdentifiers.envelopedData, enveloped);
 		return contentInfo.toASN1Primitive();
-	}
+	}*/
 
-	private KeyTransRecipientInfo computeRecipientInfo(X509Certificate x509certificate, byte[] abyte0)
+	/*private KeyTransRecipientInfo computeRecipientInfo(X509Certificate x509certificate, byte[] abyte0)
 			throws IOException, CertificateEncodingException, InvalidKeyException,
 			BadPaddingException, IllegalBlockSizeException
 	{
@@ -467,5 +468,5 @@ public final class PublicKeySecurityHandler extends SecurityHandler
 		DEROctetString octets = new DEROctetString(cipher.doFinal(abyte0));
 		RecipientIdentifier recipientId = new RecipientIdentifier(serial);
 		return new KeyTransRecipientInfo(recipientId, algorithmId, octets);
-	}
+	}*/
 }

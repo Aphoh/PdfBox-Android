@@ -30,9 +30,9 @@ android {
 }
 
 dependencies {
-    compile 'com.madgag.spongycastle:core:1.51.0.0'
+    /*compile 'com.madgag.spongycastle:core:1.51.0.0'
     compile 'com.madgag.spongycastle:pkix:1.51.0.0'
-    compile 'com.madgag.spongycastle:prov:1.51.0.0'
+    compile 'com.madgag.spongycastle:prov:1.51.0.0'*/
 }
 
 //apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
